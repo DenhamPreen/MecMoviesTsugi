@@ -1,0 +1,23 @@
+body{
+}
+
+.slideView{
+    width: 874px;
+    margin:10px auto 0px auto;
+    border: black 1px solid;
+}
+
+.colgrid {
+    display: table-cell; 
+}
+
+.active{
+	background-color: darkblue;
+}
+.vula-blue {
+	background-color: rgb(0,85,144) !important;
+}
+
+.vula-blue-dark {
+	background-color: rgb(0,70,120) !important;
+}

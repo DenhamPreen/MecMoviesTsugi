@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="../../css/materialize.css" rel="stylesheet">
+        <link href="../../css/mecMovieStyle.css" rel="stylesheet">
+
+    </head>
+    <body>
+        
+        <div class="slideView blue-grey lighten-5">
+              <nav>
+                <div class="nav-wrapper blue-grey darken-4">
+                  <a href="#" class="brand-logo" style="margin-left:30px">MecMovies</a>
+                  <ul class="right hide-on-med-and-down">
+                    <li><a href="#"><i class="material-icons">fast_rewind</i></a></li>
+                    <li><a href="title.html"><i class="material-icons">skip_previous</i></a></li>
+                    <li><a href="page3.html"><i class="material-icons">skip_next</i></a></li>
+                    <li><a href="#"><i class="material-icons">fast_forward</i></a></li>
+                  </ul>
+                </div>
+              </nav>
+                  
+                <div class="row" style="margin-bottom:0;">
+                    <div class="col m3 s2 blue-grey darken-3 colgrid" style="color:white; height:460px">
+                        <a class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%" >Introduction</a>
+                        <a class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Stress and Strain</a>
+                        <a class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Stress Transform</a>
+                        <a class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Axial</a>
+                        <a class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Torsion</a>
+                        <a class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Beam Equilibrium</a>
+                        <a class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Bending Stress</a>
+                        <a class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Beam Deflections</a>
+                        <a class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Second Moments</a>
+                    </div>
+                    <div class="col m9 s10 center colgrid" id="flashWindow" style="height:460px;margin:0px;">
+                                   
+                    </div>
+                </div>
+            
+         <footer class="page-footer blue-grey darken-4">             
+            <div class="row" style="margin-bottom:0px;">
+                <div class="col m6 s6">
+                    <p style="">Timothy A. Philpot</p>
+                </div>
+                <div class="col m6 s6">
+                    <p style="margin:0 10px">
+                    <a href="#"><i class="material-icons grey-text text-lighten-4 right">fast_forward</i></a>
+                    <a href="page3.html"><i class="material-icons grey-text text-lighten-4 right">skip_next</i></a>
+                    <a href="title.html"><i class="material-icons grey-text text-lighten-4 right">skip_previous</i></a>
+                    <a href="#"><i class="material-icons grey-text text-lighten-4 right">fast_rewind</i></a>
+                </p>
+                </div>
+              </div>
+          
+        </footer>
+            </div>
+        <script type="text/javascript" src="../../js/swfobject-master/swfobject/swfobject.js"></script>
+
+    <script type="text/javascript">
+        var el = document.getElementById("flashWindow"); 
+        swfobject.embedSWF("about.swf", el, 748, 448, 10);
+    </script>
+        <script type="application/javascript" src="../../js/jquery.js"></script>
+        <script type="application/javascript" src="../../js/materialize.js"></script>
+    </body>
+    </html>
