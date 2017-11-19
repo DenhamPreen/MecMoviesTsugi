@@ -101,6 +101,7 @@
 		
 		function slidesHtml(chapterIndex, slideIndex){
 			document.getElementById("flashWindow").innerHTML = '<embed width="632" height="460" src=" slides/'+ slides[chapterIndex][slideIndex] +'">';
+			console.log(slides[chapterIndex][slideIndex]);
 		}
 		
 		function downloadNotesHtml(){

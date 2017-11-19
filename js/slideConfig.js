@@ -2,7 +2,8 @@ var slides = [
 	
 	//Chapter 1
 	
-	[],
+	["1_introduction/1.1_M8.22.swf",
+	"1_introduction/1.2_M15.6.swf"],
 	
 	//Chapter 2
 	
