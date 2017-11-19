@@ -14,10 +14,19 @@ body{
 .active{
 	background-color: darkblue;
 }
+.vula-blue .lighten {
+	background-color: rgb(0,95,165) !important;
+}
+
 .vula-blue {
 	background-color: rgb(0,85,144) !important;
 }
 
 .vula-blue-dark {
 	background-color: rgb(0,70,120) !important;
+}
+
+.menuButton{
+	margin:5px auto;
+	width:100%;
 }

@@ -6,7 +6,7 @@
         <link href="css/mecMovieStyle.css" rel="stylesheet">
 		<link href="css/toastr.css" rel="stylesheet">
     </head>
-    <body>
+    <body onload="onloadHandler()">
         
         <div class="slideView">
               <nav>
@@ -22,19 +22,9 @@
               </nav>
                   
                 <div class="row" style="margin-bottom:0;">
-                    <div class="col m3 s2 vula-blue-dark colgrid" style="color:white; height:460px;width:240px;">
-                        <a href="#" onClick="selectChapter(1); return false;" class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%" >Introduction</a>
-                        <a href="#" onClick="selectChapter(2); return false;" class="waves-effect waves-light btn blue-grey" style="margin:5px auto;width:100%">Stress and Strain</a>
-                        <a href="#" onClick="selectChapter(3); return false;" class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Stress Transform</a>
-                        <a href="#" onClick="selectChapter(4); return false;" class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Axial</a>
-                        <a href="#" onClick="selectChapter(5); return false;" class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Torsion</a>
-                        <a href="#" onClick="selectChapter(6); return false;" class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Beam Equilibrium</a>
-                        <a href="#" onClick="selectChapter(7); return false;" class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Bending Stress</a>
-                        <a href="#" onClick="selectChapter(8); return false;" class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Beam Deflections</a>
-<!--                        <a href="chapter9.html" class="waves-effect waves-light btn blue-grey darken-2" style="margin:5px auto;width:100%">Second Moments</a>-->
+                    <div class="col m3 s2 vula-blue-dark colgrid" style="color:white; height:460px;width:240px;" id="menubar">
                     </div>
                     <div class="col m9 s10 center colgrid" id="flashWindow" style="height:460px;width:632px;margin:0;padding:0">
-						<embed id="frame" width="632" height="460" src="slides/2_stressAndStrain/2.1_M1.2.swf">
                     </div>
                 </div>
             
@@ -58,60 +48,10 @@
         </footer>
             </div>
         
-    <script type="text/javascript">	
-	
-		var index = 0;
-		var chapter = 1;
-		
-		function selectChapter(chapterIndex){
-			chapterIndex--;
-			var outOfRange = (chapterIndex > slides.length) || (chapterIndex - 1 < 0);
-			if (outOfRange){
-				toastr.error("Out of range")
-			} else {
-				chapter = chapterIndex;
-				slidesHtml(chapterIndex, 0);
-			}
-		}
-		
-		function changeChapter(forward){
-			var outOfRange = (chapter > slides.length) || (chapter - 1 < 0);
-			if (outOfRange){
-				toastr.error("Out of range")
-			} else {
-			forward ? chapter++ : chapter--;
-			slidesHtml(chapter, 0);
-			downloadNotesHtml();
-			index = 0;
-			}
-		}
-		function changeSlide(forward){
-			if (index > 0 && !forward){
-				index--;
-			}
-			else if (index < slides[chapter].length - 1 && forward){
-				index++;
-			}
-			else {
-				toastr.info("End of this section");
-			}
-			slidesHtml(chapter, index);
-
-		}	
-		
-		function slidesHtml(chapterIndex, slideIndex){
-			document.getElementById("flashWindow").innerHTML = '<embed width="632" height="460" src=" slides/'+ slides[chapterIndex][slideIndex] +'">';
-			console.log(slides[chapterIndex][slideIndex]);
-		}
-		
-		function downloadNotesHtml(){
-			var offsetForFirstPositionBeingFullCourse = 1;
-			document.getElementById("downloadNotes").innerHTML = '<a href="courseNotes/' + courseNotes[chapter + offsetForFirstPositionBeingFullCourse] + '" style="float:right" download><i class="material-icons grey-text text-lighten-4">cloud_download</i></a>';
-		}
-    </script>
         <script type="application/javascript" src="js/jquery.js"></script>
 		<script type="application/javascript" src="js/toastr.js"></script>
         <script type="application/javascript" src="js/materialize.js"></script>
 		<script type="application/javascript" src="js/slideConfig.js"></script> <!--slides and chapter configuration-->
+		<script type="application/javascript" src="js/scripts.js"></script>
     </body>
     </html>
