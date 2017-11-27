@@ -27,6 +27,8 @@ body{
 }
 
 .menuButton{
-	margin:5px auto;
+	margin:2px auto;
 	width:100%;
+	font-size:12px;
+	padding:0px !important;
 }

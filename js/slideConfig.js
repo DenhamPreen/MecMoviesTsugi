@@ -48,12 +48,11 @@ var chapters = [
 			  "3_stressTransform/3.13_M12.11.swf",
 			  "3_stressTransform/3.14_M12.12.swf",
 			  "3_stressTransform/3.15_M12.13.swf",
-			  "3_stressTransform/3.16_M12.14.swf",
-			  "3_stressTransform/3.17_M12.15.swf",
-			  "3_stressTransform/3.18_M12.16.swf",
-			  "3_stressTransform/3.19_M12.17.swf",
-			  "3_stressTransform/3.20_M12.18.swf",
-			  "3_stressTransform/3.21_M12.19.swf"]},
+			  "3_stressTransform/3.16_M12.15.swf",
+			  "3_stressTransform/3.17_M12.16.swf",
+			  "3_stressTransform/3.18_M12.17.swf",
+			  "3_stressTransform/3.19_M12.18.swf",
+			  "3_stressTransform/3.20_M12.19.swf"]},
 	
 	//Chapter 4
 	

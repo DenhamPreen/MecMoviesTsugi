@@ -13,7 +13,8 @@ function selectChapter(chapterIndex){
 		toastr.error("Not a valid chapter")
 	} else {
 		chapter = chapterIndex;
-		slidesHtml(chapterIndex, 0);
+		index = 0;
+		slidesHtml(chapterIndex, index);
 	}
 }
 
