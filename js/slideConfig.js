@@ -159,7 +159,13 @@ var chapters = [
 			  "8_beamDeflections/8.15_M11.1.swf",
 			  "8_beamDeflections/8.16_M11.2.swf",
 			  "8_beamDeflections/8.17_M11.3.swf",
-			  "8_beamDeflections/8.18_M11.4.swf"]}
+			  "8_beamDeflections/8.18_M11.4.swf"]},
+	
+	{ name: "Beam Equilibrium",
+	  chapter: 6,
+	  slides: ["6_beamEquilibrium/6.1_M7.1.swf",
+			  "6_beamEquilibrium/6.2_shearForceFollowingTheRules.swf",
+			  "6_beamEquilibrium/6.3_shearForceStepByStep.swf"]}
 
 	
 ]; //array of objects where slides are an array // Array of Chapter objects 
