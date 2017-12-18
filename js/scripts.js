@@ -1,6 +1,7 @@
 var index = 0; // consider using chapter urls length
 var chapter = 0;
 
+console.log(chapters[chapter].name);
 function onloadHandler(){
 	buildMenu();
 	slidesHtml(0,0);
@@ -16,6 +17,7 @@ function selectChapter(chapterIndex){
 		index = 0;
 		slidesHtml(chapterIndex, index);
 	}
+	console.log(chapters[chapter].name);
 }
 
 function changeChapter(forward){
@@ -29,6 +31,8 @@ function changeChapter(forward){
 		console.log(forward);
 		forward ? chapter++ : chapter--;
 		console.log(chapter);
+		console.log(chapters[chapter].name);
+		console.log("Some random text");
 		index = 0;
 		slidesHtml(chapter, index);
 		downloadNotesHtml();	
@@ -45,12 +49,14 @@ function changeSlide(forward){
 	else {
 		toastr.info("End of this section");
 	}
+	console.log(chapters[chapter].name);
 	slidesHtml(chapter, index);
+	
 
 }	
 
 function slidesHtml(chapterIndex, slideIndex){
-	document.getElementById("flashWindow").innerHTML = '<embed width="632" height="460" src=" slides/'+ chapters[chapterIndex].slides[slideIndex] +'">';	
+	document.getElementById("flashWindow").innerHTML = '<embed width="632" height="460" src=" slides/'+ chapters[chapterIndex].slides[slideIndex].url +'">';	
 }
 
 function downloadNotesHtml(){
@@ -66,3 +72,4 @@ function buildMenu(){
 		document.getElementById("menubar").innerHTML += '<a href="#" onClick="selectChapter('+ chapters[chapterIndex].chapter +'); return false;" class="waves-effect waves-light btn vula-blue menuButton" id="chapter'+ chapters[chapterIndex].chapter +'">'+ chapters[chapterIndex].name +'</a>';
 	}
 }
+

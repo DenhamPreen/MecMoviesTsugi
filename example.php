@@ -32,6 +32,9 @@ $OUTPUT->header();
     text-align: center;
     border: 1px solid #ccc;
 }
+	tr,td {
+		padding:10px;
+	}
 
 </style>
 </style>
@@ -41,32 +44,54 @@ $OUTPUT->topNav();
 
 $path = $CFG->getPWD('index.php');
 $post_url = str_replace('\\','/',addSession($CFG->getCurrentFileURL('api.php')));
+
+	echo('<a href="example.php" class="btn btn-default">View Student Progress</a> ');
+	echo('<a href="index.php" class="btn btn-default">Course</a> ');
+
+
 ?>
 
-<h1>Mec Movies - Example Database</h1>
+<h1>Mec Movies - Database View</h1>
 
 <div><small><?=$post_url?></small></div>
 
 <div class="examples">
+<!--
     <button type="button" id="btn_post">Post</button>
     <div id="txt_post"></div>
+-->
 
+<!--
     <button type="button" id="btn_get">Get</button>
     <div id="txt_get"></div>
+-->
 
 
+<!--
     <button type="button" id="btn_timer">Start Timed insert</button>
     <input type="text" id="inp_timer_countdown" value=""/>
     <div id="txt_timer"></div>
+	
+-->
 </div>
+<button type="button" id="btn_display">Display Records</button>
 
+<table style="width:100%">
+  <tr>
+    <th>Identifier</th>
+    <th>Course</th> 
+    <th>Date Completed</th>
+  </tr>
+	
+</table>
+<span id="example"  style="width:100%"></span>
 <?php
 $OUTPUT->footerStart();
 ?>
 
 <script type="text/javascript">
 
-var int_timer_completed = 10000, // timer will complete in 10 seconds
+var int_timer_completed = 3000, // timer will complete in 3 seconds
     id_interval, id_timeout;
 
 
@@ -77,7 +102,7 @@ $(function() {
         console.log('post');
 
         // Send the data using post
-        var posting = $.post("<?=$post_url?>", { module: "test" } );
+        var posting = $.post("<?=$post_url?>", { module: "test3" } );
 
         // Put the results in a div
         posting.done(function( data ) {
@@ -90,11 +115,74 @@ $(function() {
         console.log('get');
 
         // Send the data using get
+		console.log("<?=$post_url?>");
         var getting = $.get("<?=$post_url?>");
 
         // Put the results in a div
         getting.done(function( data ) {
             $( "#txt_get" ).empty().append(data);
+			console.log(typeof(data));
+			console.log(data);
+			console.log(data.completed);
+			var obj = JSON.parse(data);
+			console.log(typeof(obj));
+			console.log(obj.result);
+			console.log(obj.result.length);
+			
+			var oldTable = document.getElementById('example'),
+				newTable = oldTable.cloneNode(true);
+			for(var i = 0; i < obj.result.length; i++){
+				var tr = document.createElement('tr');
+				console.log("data length");
+				console.log(obj.result[i].l);
+				console.log(typeof(obj.result[i]));
+				for (var key in obj.result[i]) {
+					if (obj.result[i].hasOwnProperty(key)) {
+						var td = document.createElement('td');
+						td.appendChild(document.createTextNode(obj.result[i][key]));
+						tr.appendChild(td);
+					}
+				}
+				newTable.appendChild(tr);
+			}
+
+			oldTable.parentNode.replaceChild(newTable, oldTable);
+			
+        });
+    });
+	
+	
+	    $('#btn_display').on('click', function(event){
+        event.preventDefault();
+        console.log('get');
+
+        // Send the data using get
+		console.log("<?=$post_url?>");
+        var getting = $.get("<?=$post_url?>");
+
+        // Put the results in a div
+        getting.done(function( data ) {
+			var obj = JSON.parse(data);
+			
+			var oldTable = document.getElementById('example'),
+				newTable = oldTable.cloneNode(true);
+			for(var i = 0; i < obj.result.length; i++){
+				var tr = document.createElement('tr');
+				console.log("data length");
+				console.log(obj.result[i].l);
+				console.log(typeof(obj.result[i]));
+				for (var key in obj.result[i]) {
+					if (obj.result[i].hasOwnProperty(key)) {
+						var td = document.createElement('td');
+						td.appendChild(document.createTextNode(obj.result[i][key]));
+						tr.appendChild(td);
+					}
+				}
+				newTable.appendChild(tr);
+			}
+
+			oldTable.parentNode.replaceChild(newTable, oldTable);
+			
         });
     });
 
@@ -107,7 +195,7 @@ $(function() {
             i = i < 0 ? 0 : i;
             console.log(i);
             
-            // coud also trigger insert here
+            // could also trigger insert here
             if (i === 0) window.clearInterval(id_interval);
             $('#inp_timer_countdown').val(i);
         }, 1000);
