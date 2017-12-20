@@ -97,7 +97,7 @@ echo "</p>";
 		<link href="css/toastr.css" rel="stylesheet">
     </head>
     <body onload="onloadHandler()">
-        
+        <center><div id="suggestedTime"><br></div></center>
         <div class="slideView">
               <nav>
                 <div class="nav-wrapper vula-blue-dark">
@@ -148,11 +148,7 @@ echo "</p>";
 <?php
 //$OUTPUT->welcomeUserCourse();
 if ( $USER->instructor ) {
-	echo('<button type="button" id="btn_post">Post</button>
-    <div id="txt_post"></div>
-
-    <button type="button" id="btn_timer">Start Timed insert</button>
-    <input type="text" id="inp_timer_countdown" value=""/>
+	echo(' <input type="text" id="inp_timer_countdown" value=""/>
     <div id="txt_timer"></div>');
 }
 ?>

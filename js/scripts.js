@@ -16,9 +16,11 @@ function selectChapter(chapterIndex){
 	if (outOfRange){
 		toastr.error("Not a valid chapter")
 	} else {
+		
 		chapter = chapterIndex;
 		index = 0;
 		slidesHtml(chapterIndex, index);
+		suggestedTimeCalculation(chapterIndex);
 		downloadNotesHtml();
 		
 		stopTimer();
@@ -42,6 +44,7 @@ function changeChapter(forward){
 		console.log("Some random text");
 		index = 0;
 		slidesHtml(chapter, index);
+		suggestedTimeCalculation(chapter);
 		downloadNotesHtml();	
 		
 		stopTimer();
@@ -67,6 +70,25 @@ function changeSlide(forward){
 	
 
 }	
+
+function suggestedTimeCalculation(chapterIndex){
+	var totalTimeForsectionInSeconds = 0,
+		totalTimeForsectionInMinutes = 0,
+		slowLearnerMultiplierOffset = 1.75;
+	for (var slide = 0; slide < chapters[chapterIndex].slides.length; slide++){
+		totalTimeForsectionInSeconds += chapters[chapterIndex].slides[slide].minTime;
+	} 
+	totalTimeForsectionInMinutes = Math.round((totalTimeForsectionInSeconds / (60 * 1000)) * slowLearnerMultiplierOffset) ;
+	if (totalTimeForsectionInMinutes > 60){
+		var hoursOfTotalTime = Math.floor(totalTimeForsectionInMinutes / 60);
+		var minutesLeftOfTotalTime = totalTimeForsectionInMinutes % 60;
+		document.getElementById("suggestedTime").innerHTML = "This section will take approx "+hoursOfTotalTime +" hours and " + minutesLeftOfTotalTime + " Minutes";
+	}
+	else{
+		document.getElementById("suggestedTime").innerHTML = "This section will take approx " + totalTimeForsectionInMinutes + " Minutes";
+	}
+	
+}
 
 function slidesHtml(chapterIndex, slideIndex){
 	document.getElementById("flashWindow").innerHTML = '<embed width="632" height="460" src=" slides/'+ chapters[chapterIndex].slides[slideIndex].url +'">';	
