@@ -47,12 +47,13 @@ switch ($method) {
       $input = $_POST;
 
       $q = $PDOX->queryDie("INSERT INTO {$p}mecmovies
-          (link_id, user_id, completed, section_id, active)
-          VALUES ( :LI, :UI, NOW(), :MODULE, 1)
+          (link_id, user_id, completed, accumulated_time, section_id, active)
+          VALUES ( :LI, :UI, NOW(), :ACCTIME, :MODULE, 1)
           ON DUPLICATE KEY UPDATE section_id = :MODULE",
           array(
               ':LI' => $LINK->id,
               ':UI' => $USER->id,
+			  ':ACCTIME' => $input['acctime'],
               ':MODULE' => $input['module']
           )
       );
