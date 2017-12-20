@@ -5,6 +5,9 @@ console.log(chapters[chapter].name);
 function onloadHandler(){
 	buildMenu();
 	slidesHtml(0,0);
+	
+	stopTimer();
+	startTimerToDBPost();
 }
 
 function selectChapter(chapterIndex){
@@ -16,6 +19,10 @@ function selectChapter(chapterIndex){
 		chapter = chapterIndex;
 		index = 0;
 		slidesHtml(chapterIndex, index);
+		downloadNotesHtml();
+		
+		stopTimer();
+		startTimerToDBPost();
 	}
 	console.log(chapters[chapter].name);
 }
@@ -36,6 +43,9 @@ function changeChapter(forward){
 		index = 0;
 		slidesHtml(chapter, index);
 		downloadNotesHtml();	
+		
+		stopTimer();
+		startTimerToDBPost();
 	}
 	
 }
@@ -52,6 +62,9 @@ function changeSlide(forward){
 	console.log(chapters[chapter].name);
 	slidesHtml(chapter, index);
 	
+	stopTimer();
+	startTimerToDBPost();
+	
 
 }	
 
@@ -61,7 +74,7 @@ function slidesHtml(chapterIndex, slideIndex){
 
 function downloadNotesHtml(){
 	var offsetForFirstPositionBeingFullCourse = 1;
-	document.getElementById("downloadNotes").innerHTML = '<a href="courseNotes/' + courseNotes[chapter + offsetForFirstPositionBeingFullCourse] + '" style="float:right" download><i class="material-icons grey-text text-lighten-4">cloud_download</i></a>';
+	document.getElementById("downloadNotes").innerHTML = '<a href="courseNotes/' + courseNotes[chapter + offsetForFirstPositionBeingFullCourse] + '" style="float:right; text-decoration:none;color:white;" download>Download <i class="material-icons grey-text text-lighten-4">cloud_download</i> Notes</a>';
 }
 
 

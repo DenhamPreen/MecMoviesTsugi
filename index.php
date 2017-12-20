@@ -71,11 +71,11 @@ $OUTPUT->topNav();
 <h1>Mec Movies</h1>
 
 <?php
-$OUTPUT->welcomeUserCourse();
+//$OUTPUT->welcomeUserCourse();
 if ( $USER->instructor ) {
 echo "<p style='text-align:right;'>";
 if ( $CFG->launchactivity ) {
-	echo('<a href="example.php" class="btn btn-default">View Student Progress</a> ');
+	echo('<a href="databaseView.php" class="btn btn-default">View Student Progress</a> ');
 
 }
 //SettingsForm::button(false);
@@ -123,7 +123,7 @@ echo "</p>";
                 <div class="col m6 s6">
                     <span>Sa-aadat Parker</span>
 					<span id="downloadNotes">
-						<a href="courseNotes/CourseNotes.pdf" style="float:right" download><i class="material-icons grey-text text-lighten-4">cloud_download</i></a>
+						<a href="courseNotes/CourseNotes.pdf" style="float:right; text-decoration:none;color:white;" download>Download <i class="material-icons grey-text text-lighten-4">cloud_download</i> Notes</a>
 					</span>
                 </div>
                 <div class="col m6 s6">
@@ -145,19 +145,64 @@ echo "</p>";
 		<script type="application/javascript" src="js/scripts.js"></script>
     </body>
 
-<button type="button" id="btn_post">Post</button>
+<?php
+//$OUTPUT->welcomeUserCourse();
+if ( $USER->instructor ) {
+	echo('<button type="button" id="btn_post">Post</button>
     <div id="txt_post"></div>
 
     <button type="button" id="btn_timer">Start Timed insert</button>
     <input type="text" id="inp_timer_countdown" value=""/>
-    <div id="txt_timer"></div>
+    <div id="txt_timer"></div>');
+}
+?>
 
 <?php
 $OUTPUT->footerStart();
 ?>
 
 <script type="text/javascript">
+function startTimerToDBPost(){
+	
+	var chapterIndex = chapter;
+		var slideIndex = index;
+		int_timer_completed = chapters[chapterIndex].slides[slideIndex].minTime; 
+		
+        $('#inp_timer_countdown').val(int_timer_completed / 1000); // visual display
+        id_interval = window.setInterval(function(){ 
+            var i = parseInt($('#inp_timer_countdown').val(), 10) - 1;
+            i = i < 0 ? 0 : i;
+            console.log(i);
+            
+            // could also trigger insert here
+            if (i === 0) window.clearInterval(id_interval);
+            $('#inp_timer_countdown').val(i);
+        }, 1000);
 
+
+	
+        id_timeout = window.setTimeout(function(){
+
+            // Send the data using post
+			console.log(chapter);
+			console.log(slideIndex);
+			console.log(chapters[chapterIndex].slides[slideIndex].section);
+            var posting = $.post("<?=$post_url?>", { module: chapters[chapterIndex].slides[slideIndex].section } );
+
+            // Put the results in a div
+            posting.done(function( data ) {
+                $( "#txt_timer" ).empty().append(data);
+            });
+         }, int_timer_completed);
+//		});
+			}
+	
+			function stopTimer(){
+			window.clearInterval(id_interval);
+				window.clearInterval(id_timeout);
+		}
+	
+	
 var int_timer_completed = 5000, // timer will complete in 3 seconds
     id_interval, id_timeout;
 	$(function() {
@@ -175,40 +220,13 @@ var int_timer_completed = 5000, // timer will complete in 3 seconds
 			});
 		});
 		
-		$('#btn_timer').on('click', function(event){
-        event.preventDefault();
+//		$('#btn_timer').on('click', function(event){
+//        event.preventDefault();
+		//startTimerToDBPost();
 		
-		var chapterIndex = chapter;
-		var slideIndex = index;
-		int_timer_completed = chapters[chapterIndex].slides[slideIndex].minTime; 
 		
-        $('#inp_timer_countdown').val(int_timer_completed / 1000); // visual display
-        id_interval = window.setInterval(function(){ 
-            var i = parseInt($('#inp_timer_countdown').val(), 10) - 1;
-            i = i < 0 ? 0 : i;
-            console.log(i);
-            
-            // could also trigger insert here
-            if (i === 0) window.clearInterval(id_interval);
-            $('#inp_timer_countdown').val(i);
-        }, 1000);
-
-        id_timeout = window.setTimeout(function(){
-
-            // Send the data using post
-			console.log(chapter);
-			console.log(slideIndex);
-			console.log(chapters[chapterIndex].slides[slideIndex].section);
-            var posting = $.post("<?=$post_url?>", { module: chapters[chapterIndex].slides[slideIndex].section } );
-
-            // Put the results in a div
-            posting.done(function( data ) {
-                $( "#txt_timer" ).empty().append(data);
-            });
-         }, int_timer_completed);
-		});
-
 	});	
+	
 </script>
 <?php
 $OUTPUT->footerEnd();

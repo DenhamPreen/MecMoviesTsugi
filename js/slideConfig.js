@@ -3,31 +3,31 @@ var chapters = [
 	//Chapter 1
 	{ name: "Introduction",
 	  chapter: 1,
-	  slides: [{url:"1_introduction/1.1_M8.22.swf", section: "1.1", minTime: 3000},
-				{url:"1_introduction/1.2_M15.6.swf",section: "1.2", minTime: 3000}]},
+	  slides: [{url:"1_introduction/1.1_M8.22.swf", section: "1.1", minTime: 21000}, //21
+				{url:"1_introduction/1.2_M15.6.swf",section: "1.2", minTime: 70000}]}, //70
 	
 	//Chapter 2
 	
 	{ name: "Stress and Strain",
 	 chapter: 2,
-	 slides: [{url:"2_stressAndStrain/2.1_M1.2.swf", section: "2.1", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.2_M2.1.swf", section: "2.2", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.3_M2.2.swf", section: "2.3", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.4_M2.3.swf", section: "2.4", minTime: 3000}, 		
-			{ url:"2_stressAndStrain/2.5_M2.4.swf", section: "2.5", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.6_M1.1.swf", section: "2.6", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.7_M3.1.swf", section: "2.7", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.8_M3.2.swf", section: "2.8", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.9_M3.3.swf", section: "2.9", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.10_M1.3.swf", section: "2.10", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.11_M1.4.swf", section: "2.11", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.12_M1.5.swf", section: "2.12", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.13_M1.6.swf",section: "2.13", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.14_M1.7.swf",section: "2.14", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.15_M1.8.swf",section: "2.15", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.16_M1.9.swf",section: "2.16", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.17_M1.10.swf",section: "2.17", minTime: 3000}, 		
-			 {url:"2_stressAndStrain/2.18_M2.5.swf", section: "2.18", minTime: 3000}, 		]},
+	 slides: [{url:"2_stressAndStrain/2.1_M1.2.swf", section: "2.1", minTime: 114000}, 		
+			 {url:"2_stressAndStrain/2.2_M2.1.swf", section: "2.2", minTime: 122000}, 		
+			 {url:"2_stressAndStrain/2.3_M2.2.swf", section: "2.3", minTime: 97000}, 		
+			 {url:"2_stressAndStrain/2.4_M2.3.swf", section: "2.4", minTime: 130000}, 		
+			{ url:"2_stressAndStrain/2.5_M2.4.swf", section: "2.5", minTime: 115000}, 		
+			 {url:"2_stressAndStrain/2.6_M1.1.swf", section: "2.6", minTime: 202000}, 		
+			 {url:"2_stressAndStrain/2.7_M3.1.swf", section: "2.7", minTime: 187000}, 		
+			 {url:"2_stressAndStrain/2.8_M3.2.swf", section: "2.8", minTime: 714000}, 		
+			 {url:"2_stressAndStrain/2.9_M3.3.swf", section: "2.9", minTime: 100000}, 		
+			 {url:"2_stressAndStrain/2.10_M1.3.swf", section: "2.10", minTime: 114000}, 		
+			 {url:"2_stressAndStrain/2.11_M1.4.swf", section: "2.11", minTime: 312000}, 		
+			 {url:"2_stressAndStrain/2.12_M1.5.swf", section: "2.12", minTime: 133000}, 		
+			 {url:"2_stressAndStrain/2.13_M1.6.swf",section: "2.13", minTime: 148000}, 		
+			 {url:"2_stressAndStrain/2.14_M1.7.swf",section: "2.14", minTime: 117000}, 		
+			 {url:"2_stressAndStrain/2.15_M1.8.swf",section: "2.15", minTime: 96000}, 		
+			 {url:"2_stressAndStrain/2.16_M1.9.swf",section: "2.16", minTime: 267000}, 		
+			 {url:"2_stressAndStrain/2.17_M1.10.swf",section: "2.17", minTime: 103000}, 		
+			 {url:"2_stressAndStrain/2.18_M2.5.swf", section: "2.18", minTime: 80000}, 		]},
 	
 	//Chapter 3
 	
@@ -53,6 +53,30 @@ var chapters = [
 			  {url:"3_stressTransform/3.18_M12.17.swf",section: "3.18", minTime: 3000},
 			  {url:"3_stressTransform/3.19_M12.18.swf",section: "3.19", minTime: 3000},
 			  {url:"3_stressTransform/3.20_M12.19.swf",section: "3.20", minTime: 3000}]},
+	
+	// For Demo
+//		 { name: "Stress Transform",
+//	   chapter: 3,
+//	   slides: [{url:"3_stressTransform/3.1_M1.11.swf",section: "3.1", minTime: 3000},
+//			  {url:"3_stressTransform/3.2_M1.12.swf", section: "3.2", minTime: 3000},
+//			  {url:"3_stressTransform/3.3_M12.1.swf", section: "3.3", minTime: 3000},
+//			  {url:"3_stressTransform/3.4_M12.2.swf", section: "3.4", minTime: 3000},
+//			  {url:"3_stressTransform/3.5_M12.3.swf",section: "3.5", minTime: 3000},
+//			  {url:"3_stressTransform/3.6_M12.4.swf",section: "3.6", minTime: 3000},
+//			  {url:"3_stressTransform/3.7_M12.5.swf",section: "3.7", minTime: 3000},
+//			  {url:"3_stressTransform/3.8_M12.6.swf",section: "3.8", minTime: 3000},
+//			  {url:"3_stressTransform/3.9_M12.7.swf",section: "3.9", minTime: 3000},
+//			  {url:"3_stressTransform/3.10_M12.8.swf",section: "3.10", minTime: 3000},
+//			  {url:"3_stressTransform/3.11_M12.9.swf",section: "3.11", minTime: 3000},
+//			  {url:"3_stressTransform/3.12_M12.10.swf",section: "3.12", minTime: 3000},
+//			  {url:"3_stressTransform/3.13_M12.11.swf",section: "3.13", minTime: 3000},
+//			  {url:"3_stressTransform/3.14_M12.12.swf",section: "3.14", minTime: 3000},
+//			  {url:"3_stressTransform/3.15_M12.13.swf",section: "3.15", minTime: 3000},
+//			  {url:"3_stressTransform/3.16_M12.15.swf",section: "3.16", minTime: 3000},
+//			  {url:"3_stressTransform/3.17_M12.16.swf",section: "3.17", minTime: 3000},
+//			  {url:"3_stressTransform/3.18_M12.17.swf",section: "3.18", minTime: 3000},
+//			  {url:"3_stressTransform/3.19_M12.18.swf",section: "3.19", minTime: 3000},
+//			  {url:"3_stressTransform/3.20_M12.19.swf",section: "3.20", minTime: 3000}]},
 	
 	//Chapter 4
 	
