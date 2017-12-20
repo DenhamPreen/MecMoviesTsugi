@@ -183,8 +183,10 @@ function startTimerToDBPost(){
 			console.log(chapter);
 			console.log(slideIndex);
 			console.log(chapters[chapterIndex].slides[slideIndex].section);
-            var posting = $.post("<?=$post_url?>", { acctime: chapters[chapterIndex].slides[slideIndex].minTime , module: chapters[chapterIndex].slides[slideIndex].section } );
+            var posting = $.post("<?=$post_url?>", { module: chapters[chapterIndex].slides[slideIndex].section } );
 
+//			acctime: chapters[chapterIndex].slides[slideIndex].minTime , 
+			
             // Put the results in a div
             posting.done(function( data ) {
                 $( "#txt_timer" ).empty().append(data);
