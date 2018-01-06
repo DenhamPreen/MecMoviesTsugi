@@ -1,4 +1,4 @@
-var index = 0; // consider using chapter urls length
+var index = 0; 
 var chapter = 0;
 
 console.log(chapters[chapter].name);
