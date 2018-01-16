@@ -19,148 +19,90 @@ if ( SettingsForm::handleSettingsPost() ) {
     return;
 }
 
-// Get the category
-//$category = Settings::linkGet('category', 'cats');
-
 $path = $CFG->getPWD('index.php');
 $post_url = str_replace('\\','/',addSession($CFG->getCurrentFileURL('api.php')));
 
 // Render view
 $OUTPUT->header();
 ?>
-<style>
-
-@media (max-width: 1200px) {
-
-}
-@media (max-width: 1000px) {
-
-}
-@media (max-width: 800px) {
-
-}
-@media (max-width: 400px) {
-	
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-iframe{
-	outline: none;
-	overflow: hidden;
-}
-
-iframe:focus { 
-    outline: none;
-	
-}
-
-iframe[seamless] { 
-    display: block;
-}	
-	
-</style>
+    <link href="<?= addSession('css/mecMovieStyle.css') ?>" rel="stylesheet">
+    <link href="<?= addSession('css/rippler.min.css') ?>" rel="stylesheet">
+    <link href="<?= addSession('css/toastr.css') ?>" rel="stylesheet">
 <?php
 $OUTPUT->bodyStart();
 $OUTPUT->topNav();
 ?>
+<center><div id="suggestedTime"><br></div></center>
 
-<h1>Mec Movies</h1>
-
-<?php
-//$OUTPUT->welcomeUserCourse();
-if ( $USER->instructor ) {
-echo "<p style='text-align:right;'>";
-if ( $CFG->launchactivity ) {
-	echo('<a href="databaseView.php" class="btn btn-default">View Student Progress</a> ');
-
-}
-//SettingsForm::button(false);
-echo "</p>";
-//SettingsForm::start();
-?>
-
-<?php
-//SettingsForm::text('category','Please select category from lorempixel.com');
-//SettingsForm::end();
-}
-?>
-<!--<iframe src='main.html' width="100%" height="600px"></iframe>-->
-
- <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="css/materialize.css" rel="stylesheet">
-        <link href="css/mecMovieStyle.css" rel="stylesheet">
-		<link href="css/toastr.css" rel="stylesheet">
-    </head>
-    <body onload="onloadHandler()">
-        <center><div id="suggestedTime"><br></div></center>
-        <div class="slideView">
-              <nav>
-                <div class="nav-wrapper vula-blue-dark">
-                  <a href="#" class="brand-logo" style="margin-left:30px">MecMovies</a>
-                  <ul class="right hide-on-med-and-down">
-                    <li><a href="#" onClick="changeChapter(false); return false;"><i class="material-icons">fast_rewind</i></a></li>
-                    <li><a onClick="changeSlide(false); return false;" href="#"><i class="material-icons">skip_previous</i></a></li>
-                    <li><a onClick="changeSlide(true); return false;" href="#"><i class="material-icons">skip_next</i></a></li>
-                    <li><a href="#" onClick="changeChapter(true); return false;"><i class="material-icons">fast_forward</i></a></li>
-                  </ul>
-                </div>
-              </nav>
-                  
-                <div class="row" style="margin-bottom:0;">
-                    <div class="col m3 s2 vula-blue-dark colgrid" style="color:white; height:460px;width:240px;" id="menubar">
-                    </div>
-                    <div class="col m9 s10 center colgrid" id="flashWindow" style="height:460px;width:632px;margin:0;padding:0">
-                    </div>
-                </div>
-            
-         <footer class="page-footer vula-blue-dark">             
-            <div class="row" style="margin-bottom:0px;">
-                <div class="col m6 s6">
-                    <span>Sa-aadat Parker</span>
-					<span id="downloadNotes">
-						<a href="courseNotes/CourseNotes.pdf" style="float:right; text-decoration:none;color:white;" download>Download <i class="material-icons grey-text text-lighten-4">cloud_download</i> Notes</a>
-					</span>
-                </div>
-                <div class="col m6 s6">
-                    <p style="margin:0 10px">
-                    <a href="#" onClick="changeChapter(true); return false;"><i class="material-icons grey-text text-lighten-4 right">fast_forward</i></a>
-                    <a onClick="changeSlide(true); return false;" href="#"><i class="material-icons grey-text text-lighten-4 right">skip_next</i></a>
-                    <a onClick="changeSlide(false); return false;" href="#"><i class="material-icons grey-text text-lighten-4 right">skip_previous</i></a>
-                    <a href="#" onClick="changeChapter(false); return false;"><i class="material-icons grey-text text-lighten-4 right">fast_rewind</i></a>
-                </p>
-                </div>
-              </div>	
-        </footer>
+    <div class="slideView">
+        <nav class="row vula-blue-dark">
+            <div class="col-md-8">
+                <div class="brand-logo" style="margin-left:30px">MecMovies</div>
             </div>
-        
-        <script type="application/javascript" src="js/jquery.js"></script>
-		<script type="application/javascript" src="js/toastr.js"></script>
-        <script type="application/javascript" src="js/materialize.js"></script>
-		<script type="application/javascript" src="js/slideConfig.js"></script> <!--slides and chapter configuration-->
-		<script type="application/javascript" src="js/scripts.js"></script>
-    </body>
-
+            <div class="col-md-4 text-right">
+                <a href="#" ref="fast_rewind"><i class="material-icons">fast_rewind</i></a>
+                <a href="#" ref="skip_previous"><i class="material-icons">skip_previous</i></a>
+                <a href="#" ref="skip_next"><i class="material-icons">skip_next</i></a>
+                <a href="#" ref="fast_forward"><i class="material-icons">fast_forward</i></a>
+<!--
+                <li><a href="#" onClick="changeChapter(false); return false;"><i class="material-icons">fast_rewind</i></a></li>
+                <li><a onClick="changeSlide(false); return false;" href="#"><i class="material-icons">skip_previous</i></a></li>
+                <li><a onClick="changeSlide(true); return false;" href="#"><i class="material-icons">skip_next</i></a></li>
+                <li><a href="#" onClick="changeChapter(true); return false;"><i class="material-icons">fast_forward</i></a></li>
+-->            
 <?php
-//$OUTPUT->welcomeUserCourse();
 if ( $USER->instructor ) {
-	echo(' <input type="text" id="inp_timer_countdown" value=""/>
-    <div id="txt_timer"></div>');
+    echo('<a href="databaseView.php" class="side-btn">View Student Progress</a> ');
+}
+?>                
+            </div>
+        </nav>
+            
+        <div id="content" class="row vula-blue-light" style="margin-bottom:0;">
+            <div id="menubar" class="col-md-3"></div>
+            <div id="flashWindow" class="col-md-9 vula-blue-lighter text-center"></div>
+        </div>
+
+        <footer class="row vula-blue-dark">
+            <div class="col-md-4">
+                <span id="author">Sa-aadat Parker</span>
+            </div>
+            <div id="downloadNotes" class="col-md-4 text-center">&nbsp;</div>
+            <div class="col-md-4 text-right">
+                <a href="#" ref="fast_rewind"><i class="material-icons">fast_rewind</i></a>
+                <a href="#" ref="skip_previous"><i class="material-icons">skip_previous</i></a>
+                <a href="#" ref="skip_next"><i class="material-icons">skip_next</i></a>
+                <a href="#" ref="fast_forward"><i class="material-icons">fast_forward</i></a>
+            </div>
+        </footer>
+    </div>
+<?php
+if ( $USER->instructor ) {
+	echo(' <input type="text" id="inp_timer_countdown" value=""/><div id="txt_timer"></div>');
 }
 ?>
 
 <?php
 $OUTPUT->footerStart();
 ?>
-
+<script type="application/javascript" src="<?= addSession('js/toastr.js') ?>"></script>
+<script type="application/javascript" src="<?= addSession('js/jquery.rippler.min.js') ?>"></script>
+<script type="application/javascript" src="<?= addSession('js/jquery.flash.js') ?>"></script>
+<script type="application/javascript" src="<?= addSession('js/slideConfig.js') ?>"></script>
+<script type="application/javascript" src="<?= addSession('js/scripts.js') ?>"></script>
 <script type="text/javascript">
-function startTimerToDBPost(){
+    var int_timer_completed = 5000, id_interval, id_timeout,
+        chapterIndex = 0, slideIndex = 0;
+
+    function showSlide(chapter, index) {
+        $('#flashWindow').html('').flash({ src: 'slides/'+ chapters[chapter].slides[index].url, width: 632, height: 460 }, { expressInstall: true });
+        $('#downloadNotes').html( tmpl('tmpl-download-link', chapters[chapter]) );
+    }
+
+/*
+    function startTimerToDBPost(){
 	
-	var chapterIndex = chapter;
+	    var chapterIndex = chapter;
 		var slideIndex = index;
 		int_timer_completed = chapters[chapterIndex].slides[slideIndex].minTime; 
 		
@@ -200,10 +142,23 @@ function startTimerToDBPost(){
 				window.clearInterval(id_timeout);
 		}
 	
-	
-var int_timer_completed = 5000, // timer will complete in 3 seconds
-    id_interval, id_timeout;
+	*/
+    
+
 	$(function() {
+
+        $('#menubar').html( tmpl('tmpl-menu', chapters));
+        $('#menubar').on('click', 'a', function(event){
+            event.preventDefault();
+            chapterIndex = parseInt($(this).attr('ref'), 10) - 1;
+            slideIndex = 0;
+            showSlide(chapterIndex, slideIndex);
+        });
+        $('.rippler').rippler({ effectClass: 'rippler-effect', effectSize: 0,addElement: 'div', duration:  440});
+
+        // Home
+        $('#flashWindow').html( tmpl('tmpl-home',{}) );
+        $('#downloadNotes').html( tmpl('tmpl-download-link', {notes: "CourseNotes.pdf", name: "Course Notes"}) );
 
 		$('#btn_post').on('click', function(event){
 			event.preventDefault();
@@ -221,10 +176,25 @@ var int_timer_completed = 5000, // timer will complete in 3 seconds
 //		$('#btn_timer').on('click', function(event){
 //        event.preventDefault();
 		//startTimerToDBPost();
-		
-		
 	});	
-	
+</script>
+<script type="text/x-tmpl" id="tmpl-menu">
+{% $.each(o, function(i, el){ %}<a href="#" ref="{%=el.chapter%}" class="rippler rippler-default">{%=el.name%}</a>{% }); %}
+</script>
+<script type="text/x-tmpl" id="tmpl-download-link">
+{% console.log(o); %}
+<a href="courseNotes/{%=o.notes%}" class="download" title="Download - {%=o.name%}">
+    <i class="material-icons grey-text text-lighten-4">cloud_download</i> 
+    <span>Download Notes</span>
+</a>
+</script>
+<script type="text/x-tmpl" id="tmpl-home">
+    <br/>
+    <h1 class="">MecMovies 3.0</h1>
+    <h4>To Accompany</h4>
+    <br/>
+    <h2>Mechanics of Materials</h2>
+    <h4>Examples, Games, Theory, and More</h4>
 </script>
 <?php
 $OUTPUT->footerEnd();

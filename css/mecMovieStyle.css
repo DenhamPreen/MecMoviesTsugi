@@ -1,34 +1,226 @@
-body{
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../fonts/material/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'),
+		 local('MaterialIcons-Regular'),
+		 url(../fonts/material/MaterialIcons-Regular.woff2) format('woff2'),
+		 url(../fonts/material/MaterialIcons-Regular.woff) format('woff'),
+		 url(../fonts/material/MaterialIcons-Regular.ttf) format('truetype');
 }
 
-.slideView{
-    width: 874px;
-    margin:10px auto 0px auto;
-    border: black 1px solid;
+@font-face {
+	font-family: "Roboto";
+	src: local(Roboto Thin), url("../fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../fonts/roboto/Roboto-Thin.woff") format("woff");
+	font-weight: 100;
 }
 
-.colgrid {
-    display: table-cell; 
+@font-face {
+	font-family: "Roboto";
+	src: local(Roboto Light), url("../fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../fonts/roboto/Roboto-Light.woff") format("woff");
+	font-weight: 300;
 }
 
-.active{
-	background-color: darkblue;
-}
-.vula-blue .lighten {
-	background-color: rgb(0,95,165) !important;
+@font-face {
+	font-family: "Roboto";
+	src: local(Roboto Regular), url("../fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../fonts/roboto/Roboto-Regular.woff") format("woff");
+	font-weight: 400;
 }
 
-.vula-blue {
-	background-color: rgb(0,85,144) !important;
+@font-face {
+	font-family: "Roboto";
+	src: local(Roboto Medium), url("../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../fonts/roboto/Roboto-Medium.woff") format("woff");
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: local(Roboto Bold), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff");
+	font-weight: 700;
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+body {
+	line-height: 1.5;
+	font-family: "Roboto", sans-serif;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.87);
+}  
+
+.slideView {
+	position: relative;
+	width: 900px;
+	margin: auto;
+}
+
+.slideView > nav {
+	border-top: 1px solid #3F4756;
+	border-left: 1px solid #3F4756;
+	border-right: 1px solid #3F4756;
+}
+
+.slideView > div {
+	border-left: 1px solid #3F4756;
+	border-right: 1px solid #3F4756;
+}
+
+.slideView > footer {
+	border-bottom: 1px solid #3F4756;
+	border-left: 1px solid #3F4756;
+	border-right: 1px solid #3F4756;
+}
+
+.slideView #content #flashWindow {
+	-webkit-box-shadow: inset 0px 6px 6px -4px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: inset 0px 6px 6px -4px rgba(0, 0, 0, 0.4);
+	box-shadow: inset 0px 6px 6px -4px rgba(0, 0, 0, 0.4);
+	min-height: 490px;
+	min-width: 632px;
+	padding: 10px;
+}
+
+nav a, footer a {
+	outline: 0;
+	color: #e0e0e0;
+	display: inline-block;
+	margin: 0;
+	padding: 14px;
+}
+
+nav a > i.material-icons, footer a > i.material-icons {
+	color: #fff;
+	font-size: 30px;
+}
+
+nav a > span, footer a > span {
+	display: inline-block;
+	color: #fff;
+	position: relative;
+	top: -8px;
+	padding-left: 4px;
+}
+
+nav a:hover, nav a:active, footer a:hover, footer a:active {
+	outline: 0;
+	background-color: #00365c;
+	text-decoration: none;
+}
+
+nav a:hover, nav a:active, nav a:focus,
+footer a:hover, footer a:active, footer a:focus  {
+	outline: 0;
+}
+
+nav .brand-logo {
+	color: #eee;
+    display: inline-block;
+    font-size: 31px;
+	padding: 7px;
+	margin-left: 30px;
 }
 
 .vula-blue-dark {
-	background-color: rgb(0,70,120) !important;
+	background-color: #004678 !important;
 }
 
-.menuButton{
+.vula-blue-light {
+	background-color: #39689D !important;
+}
+
+.vula-blue-lighter {
+	background-color: #F4FAFF !important;
+}
+
+.menuButton {
 	margin:2px auto;
 	width:100%;
 	font-size:12px;
 	padding:0px !important;
+}
+
+a.side-btn {
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+
+	position: absolute;
+	right: -96px;
+	top: 127px;
+	background: #A3ACBD;
+	padding: 4px 8px 6px;
+	display: inline-block;
+	border-radius: 4px 4px 0 0;
+	color: #444;
+	border: 1px solid #3F4756;
+    border-bottom: 0px;
+}
+
+a.side-btn:hover, a.side-btn:active {
+	color: #fff;
+	background-color: #6F7788;
+}
+
+/* Sa-aadat Parker */
+footer #author {
+	color: #A3ACBD;
+	font-size: 14px;
+	padding: 20px;
+	display: inline-block;
+}
+
+#menubar a {
+	outline: 0;
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	background-color: rgb(78, 122, 180);;
+	text-align: center;
+	border: none;
+	border-radius: 2px;
+	height: 36px;
+	line-height: 36px;
+	padding: 0 2rem;
+	text-transform: uppercase;
+
+	margin: 10px 0px;
+
+	-webkit-transition: .2s ease-out;
+	transition: .2s ease-out;
+	cursor: pointer;
+
+	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+  
+#menubar a:hover {
+	background-color: #39689D;
+}
+
+#menubar a:first-child {
+	margin-top: 6px;
 }
