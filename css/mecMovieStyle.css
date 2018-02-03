@@ -72,6 +72,28 @@ body {
 	color: rgba(0, 0, 0, 0.87);
 }  
 
+h1 a {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.fixed-table-container {
+	margin-top: 20px;
+}
+
+table div.empty {
+    font-size: 2rem;
+	color: #ccc;
+	position: relative;
+	text-align: center;
+}
+
+table div.empty small {
+	font-size: 4rem;
+	position: relative;
+	top: -8px;
+}
+
 .slideView {
 	position: relative;
 	width: 900px;
@@ -142,6 +164,7 @@ nav .brand-logo {
     font-size: 31px;
 	padding: 7px;
 	margin-left: 30px;
+	cursor: pointer;
 }
 
 .vula-blue-dark {
@@ -186,12 +209,55 @@ a.side-btn:hover, a.side-btn:active {
 	background-color: #6F7788;
 }
 
+footer > div:first-child {
+	padding-top: 13px;
+}
+
 /* Sa-aadat Parker */
 footer #author {
+	padding: 0px;
+	display: block;
+}
+
+footer #author a {
+	outline: 0;
 	color: #A3ACBD;
-	font-size: 14px;
-	padding: 20px;
+	font-size: 12px;
+	background: transparent;
 	display: inline-block;
+	margin: 0;
+	padding: 0px;
+	position: relative;
+}
+
+footer #author a:hover,
+footer #author a:active {
+	color: #e0e0e0;
+	background: transparent;
+}
+
+footer #author a > i.material-icons {
+	color: #A3ACBD;
+	font-size: 16px;
+	position: absolute;
+	top: 0px;
+	left: 130px;
+}
+
+footer #author a:hover > i.material-icons,
+footer #author a:active > i.material-icons {
+	color: #e0e0e0;
+}
+
+.copyright {
+	color: #bbb;
+	text-align: center;
+	display: block;
+	font-size: 10px;
+	padding: 5px;
+}
+.copyright > span {
+	float: right;
 }
 
 #menubar a {
@@ -224,3 +290,16 @@ footer #author {
 #menubar a:first-child {
 	margin-top: 6px;
 }
+
+
+.slideView a.disabled {
+	opacity: .65;
+	cursor: default;
+}
+
+.slideView a.disabled:hover,
+.slideView a.disabled:active,
+.slideView a.disabled:focus {
+    background-color: transparent
+}
+

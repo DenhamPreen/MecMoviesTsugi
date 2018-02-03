@@ -40,16 +40,10 @@ $OUTPUT->topNav();
                 <div class="brand-logo" style="margin-left:30px">MecMovies</div>
             </div>
             <div class="col-md-4 text-right">
-                <a href="#" ref="fast_rewind"><i class="material-icons">fast_rewind</i></a>
-                <a href="#" ref="skip_previous"><i class="material-icons">skip_previous</i></a>
-                <a href="#" ref="skip_next"><i class="material-icons">skip_next</i></a>
-                <a href="#" ref="fast_forward"><i class="material-icons">fast_forward</i></a>
-<!--
-                <li><a href="#" onClick="changeChapter(false); return false;"><i class="material-icons">fast_rewind</i></a></li>
-                <li><a onClick="changeSlide(false); return false;" href="#"><i class="material-icons">skip_previous</i></a></li>
-                <li><a onClick="changeSlide(true); return false;" href="#"><i class="material-icons">skip_next</i></a></li>
-                <li><a href="#" onClick="changeChapter(true); return false;"><i class="material-icons">fast_forward</i></a></li>
--->            
+                <a href="#" ref="fast_rewind" title="Previous Chapter"><i class="material-icons">fast_rewind</i></a>
+                <a href="#" ref="skip_previous" title="Previous Section"><i class="material-icons">skip_previous</i></a>
+                <a href="#" ref="skip_next" title="Next Section"><i class="material-icons">skip_next</i></a>
+                <a href="#" ref="fast_forward" title="Next Chapter"><i class="material-icons">fast_forward</i></a>          
 <?php
 if ( $USER->instructor ) {
     echo('<a href="databaseView.php" class="side-btn">View Student Progress</a> ');
@@ -65,20 +59,22 @@ if ( $USER->instructor ) {
 
         <footer class="row vula-blue-dark">
             <div class="col-md-4">
-                <span id="author">Sa-aadat Parker</span>
+                <span id="author"><a href="mailto:philpott@umr.edu?subject=MecMovies: Query">Timothy A. Philpot <i class="material-icons">mail_outline</i></a></span>
+                <span id="author"><a href="mailto:sa-aadat.parker@uct.ac.za?subject=MecMovies: Query">Sa-aadat Parker <i class="material-icons">mail_outline</i></a></span>
             </div>
             <div id="downloadNotes" class="col-md-4 text-center">&nbsp;</div>
             <div class="col-md-4 text-right">
-                <a href="#" ref="fast_rewind"><i class="material-icons">fast_rewind</i></a>
-                <a href="#" ref="skip_previous"><i class="material-icons">skip_previous</i></a>
-                <a href="#" ref="skip_next"><i class="material-icons">skip_next</i></a>
-                <a href="#" ref="fast_forward"><i class="material-icons">fast_forward</i></a>
+                <a href="#" ref="fast_rewind" title="Previous Chapter"><i class="material-icons">fast_rewind</i></a>
+                <a href="#" ref="skip_previous" title="Previous Section"><i class="material-icons">skip_previous</i></a>
+                <a href="#" ref="skip_next" title="Next Section"><i class="material-icons">skip_next</i></a>
+                <a href="#" ref="fast_forward" title="Next Chapter"><i class="material-icons">fast_forward</i></a>
             </div>
         </footer>
+        <p class="text-center copyright">&copy; 2017-2018<span></span></p>
     </div>
 <?php
 if ( $USER->instructor ) {
-	echo(' <input type="text" id="inp_timer_countdown" value=""/><div id="txt_timer"></div>');
+	//echo(' <input type="text" id="inp_timer_countdown" value=""/><div id="txt_timer"></div>');
 }
 ?>
 
@@ -89,78 +85,170 @@ $OUTPUT->footerStart();
 <script type="application/javascript" src="<?= addSession('js/jquery.rippler.min.js') ?>"></script>
 <script type="application/javascript" src="<?= addSession('js/jquery.flash.js') ?>"></script>
 <script type="application/javascript" src="<?= addSession('js/slideConfig.js') ?>"></script>
-<script type="application/javascript" src="<?= addSession('js/scripts.js') ?>"></script>
+<script type="application/javascript" src="<?= addSession('js/moment.min.js') ?>"></script>
 <script type="text/javascript">
-    var int_timer_completed = 5000, id_interval, id_timeout,
+    const reducer = (accumulator, currentValue) => accumulator + currentValue.minTime;
+
+    var int_timer_completed = 5000, id_interval, id_timeout, workTime = null,
         chapterIndex = 0, slideIndex = 0;
 
-    function showSlide(chapter, index) {
-        $('#flashWindow').html('').flash({ src: 'slides/'+ chapters[chapter].slides[index].url, width: 632, height: 460 }, { expressInstall: true });
-        $('#downloadNotes').html( tmpl('tmpl-download-link', chapters[chapter]) );
+    function suggestedTimeCalculation(i) {
+
+        
+        if ((i >= 0) && (i <= chapters.length)) {
+            var slowLearnerMultiplierOffset = 1.75,
+                totalTimeForsectionInSeconds = chapters[i].slides.reduce((a, b) => ({minTime: a.minTime + b.minTime})).minTime,
+                totalTimeForsectionInMinutes = Math.round((totalTimeForsectionInSeconds / (60 * 1000)) * slowLearnerMultiplierOffset),
+                duration = moment.duration(totalTimeForsectionInMinutes, 'minutes');
+            
+            $('.copyright > span').html('This chapter will take approx <strong>'+ duration.humanize() +'</strong>');
+        } else {
+            $('.copyright > span').html('');
+        }
     }
 
-/*
+    function showSlide(chapter, index) {
+       
+        //  save my progress
+        if (workTime != null) {
+            var d = moment.duration(moment().diff(workTime));
+            //console.log('d: '+ d.asSeconds());
+
+            submitChange();
+            workTime = null;
+        }
+
+        chapterIndex = chapter === null ? chapterIndex : chapter - 1;
+        slideIndex = index === null ? slideIndex : (index - 1 < 0 ? 0 : index - 1);
+
+        // reset buttons
+        $('.slideView a').removeClass('disabled');
+        if (chapterIndex < 1) {
+            $('a[ref=fast_rewind]').addClass('disabled');
+        } else if (chapterIndex + 1 >= chapters.length) {
+            $('a[ref=fast_forward]').addClass('disabled');
+        }
+        /*
+        if (slideIndex <= 1) {
+            $('a[ref=skip_previous]').addClass('disabled');
+        } else if (chapterIndex >= 1) {
+            if (chapterIndex >= chapters[chapterIndex-1].slides[slideIndex-1]) {
+                $('a[ref=skip_next]').addClass('disabled');
+            }
+        } else {
+            $('a[ref=skip_next]').addClass('disabled');
+        }
+        */ 
+
+        if (chapterIndex == -1) {
+             // Home
+            $('#flashWindow').html( tmpl('tmpl-home',{}) );
+            $('#downloadNotes').html( tmpl('tmpl-download-link', {notes: "CourseNotes.pdf", name: "Course Notes"}) );
+            $('a[ref=skip_previous]').addClass('disabled');
+        } else {
+            startTimerToDBPost();
+
+            $('#flashWindow').html('').flash({ src: 'slides/'+ chapters[chapterIndex].slides[slideIndex].url, width: 632, height: 460 }, { expressInstall: true });
+            $('#downloadNotes').html( tmpl('tmpl-download-link', chapters[chapterIndex]) );
+        }
+    }
+
+    function changeChapter(dir){
+        dir = (dir === undefined ? 1 : dir);
+        var outOfRange = (chapterIndex + dir < 0) ||  (chapterIndex + dir >= chapters.length);
+
+        if (outOfRange){
+            toastr.error("End of Chapters")
+        } else {
+            showSlide(chapterIndex+1 + dir, 1);
+        }
+        //console.log('changeChapter '+ dir +' '+ outOfRange +' '+ chapterIndex +' '+ chapters.length);
+    }
+
+    function changeSlide(dir){
+        dir = (dir === undefined ? 1 : dir);
+
+        if (chapterIndex == -1) {
+            // from home
+            showSlide(1, 0);
+            return;
+        }
+        //console.log('changeSlide '+ dir +' '+ chapterIndex +' '+ slideIndex);// +' '+ chapters[chapterIndex].slides.length);
+
+        if (slideIndex + dir < 0){
+             // previous chapter
+            var outOfRange = (chapterIndex - 1 < 0) ||  (chapterIndex - 1 >= chapters.length);
+            if (outOfRange) {        
+                changeChapter(-1);
+            } else{
+                showSlide(chapterIndex, chapters[chapterIndex-1].slides.length);
+            }
+        } else if (slideIndex + dir >= chapters[chapterIndex].slides.length) {
+            // next chapter
+            changeChapter(1);
+        } else {
+            showSlide(null, slideIndex+1 + dir);
+        }
+    }
+
+    function submitChange() {
+        var d = moment.duration(moment().diff(workTime)),
+            s = chapters[chapterIndex].slides[slideIndex].section;
+
+         // Send the data using post
+			//console.log(chapterIndex);
+            //console.log(slideIndex);
+            //console.log(d.asSeconds());
+			//console.log(s);
+            var posting = $.post("<?=$post_url?>", { module: s, duration: d.asSeconds() } );
+
+            // Put the results in a div
+            //posting.done(function( data ) {
+            //    $( "#txt_timer" ).empty().append(data);
+            //});
+    }
+
+    function stopTimer(){
+        window.clearInterval(id_interval);
+        window.clearTimeout(id_timeout);
+    }
+
     function startTimerToDBPost(){
-	
-	    var chapterIndex = chapter;
-		var slideIndex = index;
+    
+        workTime = moment(); // new duration
 		int_timer_completed = chapters[chapterIndex].slides[slideIndex].minTime; 
-		
-        $('#inp_timer_countdown').val(int_timer_completed / 1000); // visual display
+        id_timeout = window.setTimeout(submitChange, int_timer_completed); // new timer
+
+        suggestedTimeCalculation(chapterIndex);
+		/*
+        $('#inp_timer_countdown').show().val(int_timer_completed / 1000); // visual display
         id_interval = window.setInterval(function(){ 
             var i = parseInt($('#inp_timer_countdown').val(), 10) - 1;
             i = i < 0 ? 0 : i;
-            console.log(i);
-            
+
             // could also trigger insert here
             if (i === 0) window.clearInterval(id_interval);
             $('#inp_timer_countdown').val(i);
         }, 1000);
-
-
-	
-        id_timeout = window.setTimeout(function(){
-
-            // Send the data using post
-			console.log(chapter);
-			console.log(slideIndex);
-			console.log(chapters[chapterIndex].slides[slideIndex].section);
-            var posting = $.post("<?=$post_url?>", { module: chapters[chapterIndex].slides[slideIndex].section } );
-
-//			acctime: chapters[chapterIndex].slides[slideIndex].minTime , 
-			
-            // Put the results in a div
-            posting.done(function( data ) {
-                $( "#txt_timer" ).empty().append(data);
-            });
-         }, int_timer_completed);
-//		});
-			}
-	
-			function stopTimer(){
-			window.clearInterval(id_interval);
-				window.clearInterval(id_timeout);
-		}
-	
-	*/
-    
+        */     
+    } 
 
 	$(function() {
 
         $('#menubar').html( tmpl('tmpl-menu', chapters));
         $('#menubar').on('click', 'a', function(event){
             event.preventDefault();
-            chapterIndex = parseInt($(this).attr('ref'), 10) - 1;
-            slideIndex = 0;
-            showSlide(chapterIndex, slideIndex);
+            showSlide(parseInt($(this).attr('ref'), 10), 1);
         });
         $('.rippler').rippler({ effectClass: 'rippler-effect', effectSize: 0,addElement: 'div', duration:  440});
+        showSlide(0,0);
 
-        // Home
-        $('#flashWindow').html( tmpl('tmpl-home',{}) );
-        $('#downloadNotes').html( tmpl('tmpl-download-link', {notes: "CourseNotes.pdf", name: "Course Notes"}) );
+        $('.brand-logo').on('click', function(event){
+            event.preventDefault();
+            showSlide(0,0);
+        });
 
-		$('#btn_post').on('click', function(event){
+        $('#btn_post').on('click', function(event){
 			event.preventDefault();
 			console.log('post');
 
@@ -172,10 +260,23 @@ $OUTPUT->footerStart();
 				$( "#txt_post" ).empty().append(data);
 			});
 		});
-		
-//		$('#btn_timer').on('click', function(event){
-//        event.preventDefault();
-		//startTimerToDBPost();
+
+        $('a[ref=fast_rewind]').on('click', function(event){
+            event.preventDefault();
+            if ( !$(this).hasClass('disabled')) changeChapter(-1);
+        });
+        $('a[ref=skip_previous]').on('click', function(event){
+            event.preventDefault();
+            if ( !$(this).hasClass('disabled')) changeSlide(-1);
+        });
+        $('a[ref=skip_next]').on('click', function(event){
+            event.preventDefault();
+            if ( !$(this).hasClass('disabled')) changeSlide(1);
+        });
+        $('a[ref=fast_forward]').on('click', function(event){
+            event.preventDefault();
+            if ( !$(this).hasClass('disabled')) changeChapter(1);
+        });
 	});	
 </script>
 <script type="text/x-tmpl" id="tmpl-menu">
