@@ -7,6 +7,7 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} !=/favicon.ico
+    RewriteCond %{REQUEST_FILENAME} \.(swf)$ [NC]
     RewriteRule ^ tsugi.php [L]
 </IfModule>
 
