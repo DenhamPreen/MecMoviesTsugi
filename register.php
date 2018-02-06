@@ -2,7 +2,7 @@
 
 $REGISTER_LTI2 = array(
     "name" => "Mec Movies",
-    "FontAwesome" => "fa-paw",
+    "FontAwesome" => "fa-cogs",
     "short_name" => "Mec Movies",
-    "description" => "Dev of Mec Movies"
+    "description" => "MecMovies 3.0 to accompany Mechanics of Materials - Examples, Games, Theory, and More."
 );
