@@ -60,6 +60,7 @@ if ( $USER->instructor ) {
         <footer class="row vula-blue-dark">
             <div class="col-md-4">
                 <span id="author"><a href="mailto:sa-aadat.parker@uct.ac.za?subject=MecMovies: Query">Sa-aadat Parker <i class="material-icons">mail_outline</i></a></span>
+                <span id="author"><a href="https://web.mst.edu/~mecmovie/">Based on MecMovies 2.0 by Timothy Philpot <i class="material-icons"></i></a></span>
             </div>
             <div id="downloadNotes" class="col-md-4 text-center">&nbsp;</div>
             <div class="col-md-4 text-right">
@@ -291,10 +292,8 @@ $OUTPUT->footerStart();
 <script type="text/x-tmpl" id="tmpl-home">
     <br/>
     <h1 class="">MecMovies 3.0</h1>
-    <h4>To Accompany</h4>
-    <br/>
-    <h2>MEC2025F</h2>
-    <h4>Mechanics of Solids</h4>
+    <h4>To accompany course notes in MEC2025F</h4>
+    <img src="images/MecMoviesCover.png" width="500" height="250" title="Background" />
 </script>
 <?php
 $OUTPUT->footerEnd();
