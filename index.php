@@ -165,10 +165,22 @@ $OUTPUT->footerStart();
         //console.log('changeChapter '+ dir +' '+ outOfRange +' '+ chapterIndex +' '+ chapters.length);
     }
 
+			var isPassedHome1 = false;
+	
     function changeSlide(dir){
         dir = (dir === undefined ? 1 : dir);
 
-        if (chapterIndex == -1) {
+        if (chapterIndex == -1 && !isPassedHome1) {
+            // from home
+			$('#flashWindow').html( tmpl('tmpl-home2',{}) );
+            $('#downloadNotes').html( tmpl('tmpl-download-link', {notes: "CourseNotes.pdf", name: "Course Notes"}) );
+            $('a[ref=skip_previous]').addClass('disabled');
+//            showSlide(1, 0);
+			isPassedHome1 = true;
+			chapterIndex = -1;
+            return;
+        }
+		if (chapterIndex == -1) {
             // from home
             showSlide(1, 0);
             return;
@@ -291,11 +303,25 @@ $OUTPUT->footerStart();
 </script>
 <script type="text/x-tmpl" id="tmpl-home">
     <br/>
-    <h1 class="">MecMovies 3.0</h1>
+    <br/>
+    <br/>
+    <br/>
+    <h1 class="OpeningCreditsHeading">MecMovies 3.0</h1>
     <h4>To Accompany</h4>
     <br/>
-    <h2>Mechanics of Materials</h2>
+    <h2 class="OpeningCreditsHeading">Mechanics of Materials</h2>
     <h4>Examples, Games, Theory, and More</h4>
+</script>
+<script type="text/x-tmpl" id="tmpl-home2">
+
+    <br/>
+    <h1 class="OpeningCreditsHeading">Acknowledgements</h1>
+    <h4>To Accompany</h4>
+    <br/>
+    <h4 class="acknowledgements">MecMovies is based on code written by Timothy Alan Philpot, an associate professor in the department of civil, architectural, and environmental engineering at the Missouri University of Science and Technology in Rolla, Missouri who died from a stroke on 25 January 2017.   <br/><br/>
+
+A Teaching with Technologies grant was used to integrate and customise MecMovies for the MEC2025F course, specifically for the Vula Website. Sa-aadat Parker initiated the work. Denham Preen was the developer and Corne Oosthuizen integrates the code into Vula.</h4>
+    
 </script>
 <?php
 $OUTPUT->footerEnd();
