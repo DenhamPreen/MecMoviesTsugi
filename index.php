@@ -291,7 +291,7 @@ $OUTPUT->footerStart();
 </script>
 <script type="text/x-tmpl" id="tmpl-home">
     <br/>
-    <h1 class="">MecMovies 3.0</h1>
+    <h1 class="">UCT MecMovies</h1>
     <h4>To accompany course notes in MEC2025F</h4>
     <img src="images/MecMoviesCover.png" width="500" height="250" title="Background" />
 </script>
