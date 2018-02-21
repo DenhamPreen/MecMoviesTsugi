@@ -135,7 +135,7 @@ var chapters = [
 	   	chapter: 7,
 	   	notes: "Chapter7.pdf",
 	   	slides: [
-			{url:"7_bendingStress/7.1_M8.1.swf",section: "7.1", minTime: 75000},
+			{url:"7_bendingStress/7.1_M8.1.swf",section: "7.1", minTime: 60000},
 			{url:"7_bendingStress/7.2_M8.2.swf",section: "7.2", minTime: 216000},
 			{url:"7_bendingStress/7.3_M8.3.swf",section: "7.3", minTime: 199000},
 			{url:"7_bendingStress/7.4_M8.4.swf",section: "7.4", minTime: 354000},

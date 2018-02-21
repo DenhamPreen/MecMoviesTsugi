@@ -59,8 +59,8 @@ if ( $USER->instructor ) {
 
         <footer class="row vula-blue-dark">
             <div class="col-md-4">
-                <span id="author"><a href="mailto:philpott@umr.edu?subject=MecMovies: Query">Timothy A. Philpot <i class="material-icons">mail_outline</i></a></span>
                 <span id="author"><a href="mailto:sa-aadat.parker@uct.ac.za?subject=MecMovies: Query">Sa-aadat Parker <i class="material-icons">mail_outline</i></a></span>
+                <span id="author"><a href="https://web.mst.edu/~mecmovie/">Based on MecMovies 2.0 by Timothy Philpot <i class="material-icons"></i></a></span>
             </div>
             <div id="downloadNotes" class="col-md-4 text-center">&nbsp;</div>
             <div class="col-md-4 text-right">
@@ -304,10 +304,9 @@ $OUTPUT->footerStart();
 <script type="text/x-tmpl" id="tmpl-home">
     <br/>
     <br/>
-    <br/>
-    <br/>
-    <h1 class="OpeningCreditsHeading">MecMovies 3.0</h1>
-    <h4>To Accompany</h4>
+    <h1 class="">UCT MecMovies</h1>
+    <h4>To accompany course notes in MEC2025F</h4>
+    <img src="images/MecMoviesCover.png" width="500" height="250" title="Background" />
     <br/>
     <h2 class="OpeningCreditsHeading">Mechanics of Materials</h2>
     <h4>Examples, Games, Theory, and More</h4>
