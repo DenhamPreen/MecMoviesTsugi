@@ -303,3 +303,13 @@ footer #author a:active > i.material-icons {
     background-color: transparent
 }
 
+
+.OpeningCreditsHeading{
+	font-weight: 500;
+	font-size: 42px;
+}
+
+.acknowledgements{
+	text-align: justify;
+	
+}
