@@ -72,6 +72,7 @@ $OUTPUT->header();
 		</div>
 	</footer>
 	<p class="text-center copyright">&copy; 2017-2018<span></span></p>
+	</div>
 	<div id="Background">
 		<div id="fullScreenWindow" class="fullScreenOverlay">
 
@@ -79,7 +80,7 @@ $OUTPUT->header();
 		<div id="exitbutton">
 		</div>
 	</div>
-</div>
+
 <?php
 if ( $USER->instructor ) {
 	//echo(' <input type="text" id="inp_timer_countdown" value=""/><div id="txt_timer"></div>');
@@ -334,8 +335,7 @@ $OUTPUT->footerStart();
 	</a>
 </script>
 <script type="text/x-tmpl" id="tmpl-home">
-    <br/>
-    <br/>
+    
     <h1 class="">UCT MecMovies</h1>
     <h4>To accompany course notes in MEC2025F</h4>
     <img src="images/MecMoviesCover.png" width="500" height="250" title="Background" />
