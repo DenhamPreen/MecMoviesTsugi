@@ -316,6 +316,21 @@ footer #author a:active > i.material-icons {
 .fullScreenOverlay{
 	z-index: 100;
 	position: absolute;
-	top: 10px;
+	top: 30px;
 	left: 10px;
+}
+
+#exitButtonStyle{
+	z-index: 1000;
+	position: absolute;
+	top: 4px;
+	left: 10px;
+	color: black;
+	font-size: 20px;
+}
+
+#exitButtonStyle i{
+	color: black;
+	width:20px;
+	height:20px;
 }
