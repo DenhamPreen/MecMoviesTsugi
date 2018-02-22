@@ -311,5 +311,11 @@ footer #author a:active > i.material-icons {
 
 .acknowledgements{
 	text-align: justify;
-	
+}
+
+.fullScreenOverlay{
+	z-index: 100;
+	position: absolute;
+	top: 10px;
+	left: 10px;
 }

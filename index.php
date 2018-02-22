@@ -63,6 +63,12 @@ if ( $USER->instructor ) {
                 <span id="author"><a href="mailto:sa-aadat.parker@uct.ac.za?subject=MecMovies: Query">Sa-aadat Parker <i class="material-icons">mail_outline</i></a></span>
             </div>
             <div id="downloadNotes" class="col-md-4 text-center">&nbsp;</div>
+			<div id="enlargeView" class="col-md-4 text-center">&nbsp;
+				<a href="javascript:void" onclick="showFullScreen(null, null);" class="">
+					<i class="material-icons grey-text text-lighten-4">fullscreen</i> 
+					<span>Full Screen</span>
+				</a>
+			</div>
             <div class="col-md-4 text-right">
                 <a href="#" ref="fast_rewind" title="Previous Chapter"><i class="material-icons">fast_rewind</i></a>
                 <a href="#" ref="skip_previous" title="Previous Section"><i class="material-icons">skip_previous</i></a>
@@ -71,6 +77,9 @@ if ( $USER->instructor ) {
             </div>
         </footer>
         <p class="text-center copyright">&copy; 2017-2018<span></span></p>
+		<div id="Background">
+			<div id="fullScreenWindow" class="fullScreenOverlay"></div>
+		</div>
     </div>
 <?php
 if ( $USER->instructor ) {
@@ -107,6 +116,22 @@ $OUTPUT->footerStart();
         }
     }
 
+	function showFullScreen(chapter, index){
+		
+			var chapterIndex = 2;
+//			var chapterIndex = chapter === null ? chapterIndex : chapter - 1;
+        	var slideIndex = 2;
+//        	var slideIndex = index === null ? slideIndex : (index - 1 < 0 ? 0 : index - 1);
+		
+			var slideWindowWidth = 900;
+			var heightToWidthRatio = 460/632;
+			var slideWindowHeight = heightToWidthRatio * slideWindowWidth; 
+			
+            $('#fullScreenWindow').html('').flash({ src: 'slides/'+ chapters[chapterIndex].slides[slideIndex].url, width: slideWindowWidth, height: slideWindowHeight }, { expressInstall: true });
+		
+//			$('#Background').style.
+	}
+	
     function showSlide(chapter, index) {
        
         //  save my progress
@@ -147,8 +172,12 @@ $OUTPUT->footerStart();
             $('a[ref=skip_previous]').addClass('disabled');
         } else {
             startTimerToDBPost();
-
-            $('#flashWindow').html('').flash({ src: 'slides/'+ chapters[chapterIndex].slides[slideIndex].url, width: 632, height: 460 }, { expressInstall: true });
+			
+			var slideWindowWidth = 632;
+			var heightToWidthRatio = 460/632;
+			var slideWindowHeight = heightToWidthRatio * slideWindowWidth; 
+			
+            $('#flashWindow').html('').flash({ src: 'slides/'+ chapters[chapterIndex].slides[slideIndex].url, width: slideWindowWidth, height: slideWindowHeight }, { expressInstall: true });
             $('#downloadNotes').html( tmpl('tmpl-download-link', chapters[chapterIndex]) );
         }
     }
