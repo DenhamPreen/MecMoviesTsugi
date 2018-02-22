@@ -303,11 +303,20 @@ $OUTPUT->footerStart();
 </script>
 <script type="text/x-tmpl" id="tmpl-home">
     <br/>
+<<<<<<< HEAD
     <br/>
     <h1 class="">UCT MecMovies</h1>
     <h4>To accompany course notes in MEC2025F</h4>
     <img src="images/MecMoviesCover.png" width="500" height="250" title="Background" />
     <br/>
+=======
+    <br/>
+    <br/>
+    <br/>
+    <h1 class="OpeningCreditsHeading">MecMovies 3.0</h1>
+    <h4>To Accompany</h4>
+    <br/>
+>>>>>>> 2c61b4c... acknowledgements page on opening
     <h2 class="OpeningCreditsHeading">Mechanics of Materials</h2>
     <h4>Examples, Games, Theory, and More</h4>
 </script>
