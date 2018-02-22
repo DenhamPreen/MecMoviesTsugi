@@ -311,5 +311,26 @@ footer #author a:active > i.material-icons {
 
 .acknowledgements{
 	text-align: justify;
-	
+}
+
+.fullScreenOverlay{
+	z-index: 100;
+	position: absolute;
+	top: 30px;
+	left: 10px;
+}
+
+#exitButtonStyle{
+	z-index: 1000;
+	position: absolute;
+	top: 4px;
+	left: 10px;
+	color: black;
+	font-size: 20px;
+}
+
+#exitButtonStyle i{
+	color: black;
+	width:20px;
+	height:20px;
 }
