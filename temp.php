@@ -40,7 +40,7 @@ $OUTPUT->header();
 			<div class="brand-logo" style="margin-left:30px">MecMovies</div>
 		</div>
 		<div class="col-md-5 text-right">
-			<a href="#" ref="enlarge_view" onclick="showFullScreen();"><i class="material-icons">fullscreen</i></a>
+			<a href="#" ref="enlarge_view" onclick="showFullScreen(null, null);"><i class="material-icons">fullscreen</i></a>
 			<a href="#" ref="fast_rewind" title="Previous Chapter"><i class="material-icons">fast_rewind</i></a>
 			<a href="#" ref="skip_previous" title="Previous Section"><i class="material-icons">skip_previous</i></a>
 			<a href="#" ref="skip_next" title="Next Section"><i class="material-icons">skip_next</i></a>
@@ -60,8 +60,8 @@ $OUTPUT->header();
 
 	<footer class="row vula-blue-dark">
 		<div class="col-md-4">
+			<span id="author"><a href="mailto:philpott@umr.edu?subject=MecMovies: Query">Timothy A. Philpot <i class="material-icons">mail_outline</i></a></span>
 			<span id="author"><a href="mailto:sa-aadat.parker@uct.ac.za?subject=MecMovies: Query">Sa-aadat Parker <i class="material-icons">mail_outline</i></a></span>
-			<span id="author"><a href="https://web.mst.edu/~mecmovie/">Based on MecMovies 2.0 by Timothy Philpot <i class="material-icons"></i></a></span>
 		</div>
 		<div id="downloadNotes" class="col-md-4 text-center">&nbsp;</div>
 		<div class="col-md-4 text-right">
@@ -72,12 +72,12 @@ $OUTPUT->header();
 		</div>
 	</footer>
 	<p class="text-center copyright">&copy; 2017-2018<span></span></p>
-	<div id="Background">
-		<div id="fullScreenWindow" class="fullScreenOverlay">
+</div>
+<div id="Background">
+	<div id="fullScreenWindow" class="fullScreenOverlay">
 
-		</div>
-		<div id="exitbutton">
-		</div>
+	</div>
+	<div id="exitbutton">
 	</div>
 </div>
 <?php
@@ -125,7 +125,7 @@ $OUTPUT->footerStart();
 		$('#fullScreenWindow').hide();
 		$('#exitButtonStyle').hide();
 	}
-	
+
 	function showSlide(chapter, index) {
 
 		//  save my progress
@@ -144,6 +144,7 @@ $OUTPUT->footerStart();
 		$('.slideView a').removeClass('disabled');
 		if (chapterIndex < 1) {
 			$('a[ref=fast_rewind]').addClass('disabled');
+			
 		} else if (chapterIndex + 1 >= chapters.length) {
 			$('a[ref=fast_forward]').addClass('disabled');
 		}
@@ -304,7 +305,11 @@ $OUTPUT->footerStart();
 				$( "#txt_post" ).empty().append(data);
 			});
 		});
-
+		
+//		$('a[ref=enlarge_view]').on('click', function(event){
+//			event.preventDefault();
+//			if ( !$(this).hasClass('disabled')) changeSlide(1);
+//		});
 		$('a[ref=fast_rewind]').on('click', function(event){
 			event.preventDefault();
 			if ( !$(this).hasClass('disabled')) changeChapter(-1);
@@ -336,9 +341,10 @@ $OUTPUT->footerStart();
 <script type="text/x-tmpl" id="tmpl-home">
     <br/>
     <br/>
-    <h1 class="">UCT MecMovies</h1>
-    <h4>To accompany course notes in MEC2025F</h4>
-    <img src="images/MecMoviesCover.png" width="500" height="250" title="Background" />
+    <br/>
+    <br/>
+    <h1 class="OpeningCreditsHeading">MecMovies 3.0</h1>
+    <h4>To Accompany</h4>
     <br/>
     <h2 class="OpeningCreditsHeading">Mechanics of Materials</h2>
     <h4>Examples, Games, Theory, and More</h4>
@@ -359,6 +365,7 @@ A Teaching with Technologies grant was used to integrate and customise MecMovies
 <a href="#" ref="enlarge_view" onclick="exitFullScreen();" id="exitButtonStyle"><i class="material-icons">fullscreen_exit</i><span>Exit Full Screen</span></a>
 
 </script>
+
 <?php
 	$OUTPUT->footerEnd();
 ?>
