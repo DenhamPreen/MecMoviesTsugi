@@ -336,7 +336,7 @@ $OUTPUT->footerStart();
 </script>
 <script type="text/x-tmpl" id="tmpl-home">
     <h1 class="">UCT MecMovies</h1>
-    <h4>To accompany course notes in MEC2025F</h4>
+    <h4>To accompany course notes in MEC1009S and MEC2049F</h4>
     <img src="images/MecMoviesCover.png" width="500" height="250" title="Background" />
     <br/>
 </script>
@@ -345,7 +345,7 @@ $OUTPUT->footerStart();
     <br/>
     <h1 class="OpeningCreditsHeading">Acknowledgements</h1>
     <br/>
-    <h4 class="acknowledgements">MecMovies is based on code written by Timothy Alan Philpot, an associate professor in the department of civil, architectural, and environmental engineering at the Missouri University of Science and Technology in Rolla, Missouri who died from a stroke on 25 January 2017.   <br/><br/>
+    <h4 class="acknowledgements">MecMovies is based on code written by Timothy Alan Philpot, an associate professor in the Department of civil, architectural, and environmental engineering at the Missouri University of Science and Technology in Rolla, Missouri who died from a stroke on 25 January 2017.   <br/><br/>
 
 A UCT Teaching with Technologies grant was used to integrate and customise MecMovies for the MEC2025F course, specifically for the Vula Website. Sa-aadat Parker initiated the work, Denham Preen was the developer and Corne Oosthuizen integrated the code into Vula.</h4>
 

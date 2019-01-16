@@ -5,7 +5,7 @@ var chapters = [
 	  	chapter: 1,
 	  	notes: "Chapter1.pdf",
 	  	slides: [
-			{url:"1_introduction/1.1_M8.22.swf", section: "1.1", minTime: 21000}, //21
+			{url:"1_introduction/1.1_M8.22.swf", section: "1.1", minTime: 21000}, //21 seconds
 			{url:"1_introduction/1.2_M15.6.swf", section: "1.2", minTime: 70000}
 		]
 	}, //70
