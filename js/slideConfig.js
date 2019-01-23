@@ -19,7 +19,7 @@ var chapters = [
 			{url:"2_stressAndStrain/2.2_M2.1.swf", section: "2.2", minTime: 122000}, 		
 			{url:"2_stressAndStrain/2.3_M2.2.swf", section: "2.3", minTime: 97000}, 		
 			{url:"2_stressAndStrain/2.4_M2.3.swf", section: "2.4", minTime: 130000}, 		
-			{ url:"2_stressAndStrain/2.5_M2.4.swf", section: "2.5", minTime: 115000}, 		
+			{url:"2_stressAndStrain/2.5_M2.4.swf", section: "2.5", minTime: 115000}, 		
 			{url:"2_stressAndStrain/2.6_M1.1.swf", section: "2.6", minTime: 202000}, 		
 			{url:"2_stressAndStrain/2.7_M3.1.swf", section: "2.7", minTime: 187000}, 		
 			{url:"2_stressAndStrain/2.8_M3.2.swf", section: "2.8", minTime: 714000}, 		
@@ -65,7 +65,7 @@ var chapters = [
 	},
 	
 	//Chapter 4
-	{ 	name: "Axial",
+	{ 	name: "Axial Loading",
 		chapter: 4,
 		notes: "Chapter4.pdf",
 		slides: [
@@ -137,8 +137,8 @@ var chapters = [
 	   	slides: [
 			{url:"7_bendingStress/7.1_M8.1.swf",section: "7.1", minTime: 60000},
 			{url:"7_bendingStress/7.2_M8.2.swf",section: "7.2", minTime: 216000},
-			{url:"7_bendingStress/7.3_M8.3.swf",section: "7.3", minTime: 199000},
-			{url:"7_bendingStress/7.4_M8.4.swf",section: "7.4", minTime: 354000},
+			{url:"7_bendingStress/7.3_M8.3-1.swf",section: "7.3", minTime: 199000},
+			{url:"7_bendingStress/7.4_M8.4-1.swf",section: "7.4", minTime: 354000},
 			{url:"7_bendingStress/7.5_M8.5.swf",section: "7.5", minTime: 70000},
 			{url:"7_bendingStress/7.6_M8.6.swf",section: "7.6", minTime: 205000},
 			{url:"7_bendingStress/7.7_M8.7.swf",section: "7.7", minTime: 777000},
@@ -149,14 +149,13 @@ var chapters = [
 			{url:"7_bendingStress/7.12_M8.12.swf",section: "7.12", minTime: 243000},
 			{url:"7_bendingStress/7.13_M8.13.swf",section: "7.13", minTime: 706000},
 			{url:"7_bendingStress/7.14_M8.14.swf",section: "7.14", minTime: 188000},
-			{url:"7_bendingStress/7.15_M8.15.swf",section: "7.15", minTime: 295000},
-			{url:"7_bendingStress/7.16_M8.16.swf",section: "7.16", minTime: 391000},
-			{url:"7_bendingStress/7.17_M8.17.swf",section: "7.17", minTime: 374000},
-			{url:"7_bendingStress/7.18_M8.18.swf",section: "7.18", minTime: 626000},
-			{url:"7_bendingStress/7.19_M8.19.swf",section: "7.19", minTime: 415000},
-			{url:"7_bendingStress/7.20_M8.20.swf",section: "7.20", minTime: 277000},
-			{url:"7_bendingStress/7.21_M8.21.swf",section: "7.21", minTime: 324000},
-			{url:"7_bendingStress/7.22_M8.23.swf",section: "7.22", minTime: 252000}
+			{url:"7_bendingStress/7.16_M8.16.swf",section: "7.15", minTime: 391000},
+			{url:"7_bendingStress/7.17_M8.17.swf",section: "7.16", minTime: 374000},
+			{url:"7_bendingStress/7.18_M8.18-1.swf",section: "7.17", minTime: 626000},
+			{url:"7_bendingStress/7.19_M8.19.swf",section: "7.18", minTime: 415000},
+			{url:"7_bendingStress/7.20_M8.20.swf",section: "7.19", minTime: 277000},
+			{url:"7_bendingStress/7.21_M8.21.swf",section: "7.20", minTime: 324000},
+			{url:"7_bendingStress/7.22_M8.23.swf",section: "7.21", minTime: 252000}
 		]
 	},
 	
